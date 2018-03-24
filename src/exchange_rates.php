@@ -84,7 +84,7 @@ return  exchange_rate_convert("USD",$currency,1);
 # 1 EUR equievelant to xxx currency
 public function fetch_exchange_rates()
 {
-$cache_time;
+    $this->cache_time;
 
 
 $now = time();
@@ -99,7 +99,7 @@ $interval=0;
 if (file_exists($cache) )
     $interval = $now - filemtime($cache);
     
-  if (  ( $interval > $cache_time  )  ||  !file_exists($cache)  )   //not in cahce OR cache expired
+  if (  ( $interval > $this->cache_time  )  ||  !file_exists($cache)  )   //not in cahce OR cache expired
   {
         $stuff = file( $this->exchange_source_url);  
         $trace = "Fresh XML GET from URL";
