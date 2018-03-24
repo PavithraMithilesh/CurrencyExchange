@@ -44,7 +44,6 @@ public function __construct($url="http://www.ecb.int/stats/eurofxref/eurofxref-d
 $this->exchange_source_url=$url;
 $this->cache_folder=dirname(__FILE__);   //default to current folder - in production place $_CONFIG['cache_path'] here.
 $this->cache_time=(3600 * 24) ;			//how long in seconds to make use of the cached file
-echo "cacheTime:".$this->cache_time;
 $this->fetch_exchange_rates(); //now make the initial call to get the rates
 }
 
@@ -89,7 +88,6 @@ $cache_time;
 
 
 $now = time();
-echo "now:".$now;    
 $cache =$this->cache_folder."/".$this->cache_file;  //location and filename of rates chached file
 $this->exchrate['EUR'] = 1.00;
 $amount = 1;
@@ -100,7 +98,6 @@ $interval=0;
 
 if (file_exists($cache) )
     $interval = $now - filemtime($cache);
-    echo "interval:".$interval;
     
   if (  ( $interval > $cache_time  )  ||  !file_exists($cache)  )   //not in cahce OR cache expired
   {
